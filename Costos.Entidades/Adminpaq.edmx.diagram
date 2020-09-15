@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="06177b16857f44e0a9cf7faebd822070" Name="Diagram1" ZoomLevel="107">
+        <EntityTypeShape EntityType="adminpaqcopiaModel.cmovimientosalmacen" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.existenciar" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.LOGG" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.mcapas" Width="1.5" PointX="4.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.mmovimientos" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.mtemp" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.mmovresp" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.mmovtmp" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.amovimientos" Width="2.125" PointX="10.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.amovimientosmviT" Width="3.625" PointX="9.625" PointY="2.625" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.amovimientosT" Width="3.625" PointX="11.375" PointY="6.75" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.AInventarioT" Width="3.625" PointX="1.75" PointY="8.625" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.vagrupadosemana" Width="3.625" PointX="12.625" PointY="11.75" />
+        <EntityTypeShape EntityType="adminpaqcopiaModel.V_MOVADICIONALES" Width="1.5" PointX="0.75" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

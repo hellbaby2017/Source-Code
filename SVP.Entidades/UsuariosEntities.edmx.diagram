@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12841c25377a41d8b2fc6a2d4ed59852" Name="Diagram1">
+        <EntityTypeShape EntityType="adminpaqModel.Cfg_AtiposUsuarios" Width="1.5" PointX="0.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.Cfg_cModulos" Width="1.5" PointX="8.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.Cfg_cModuloxUsuario" Width="2.5" PointX="2.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.Cfg_cProgramaxTipoUsuario" Width="2.375" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.Cfg_cUsuarios" Width="1.5" PointX="3.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.Cfg_Programa" Width="1.5" PointX="6" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.configuracion" Width="1.5" PointX="9.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adminpaqModel.LOGG" Width="1.5" PointX="8.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="adminpaqModel.FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" />
+        <AssociationConnector Association="adminpaqModel.FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" />
+        <EntityTypeShape EntityType="adminpaqModel.vtipoxmodulo" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="adminpaqModel.vtipoxprograma" Width="1.5" PointX="2.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

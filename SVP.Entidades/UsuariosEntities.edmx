@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="adminpaqModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Cfg_AtiposUsuarios">
+          <Key>
+            <PropertyRef Name="causutipo" />
+          </Key>
+          <Property Name="causutipo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Cfg_cModulos">
+          <Key>
+            <PropertyRef Name="cModulo" />
+          </Key>
+          <Property Name="cModulo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cfg_cModuloxUsuario">
+          <Key>
+            <PropertyRef Name="IdModxusu" />
+          </Key>
+          <Property Name="IdModxusu" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cModulo" Type="smallint" />
+          <Property Name="causutipo" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Cfg_cProgramaxTipoUsuario">
+          <Key>
+            <PropertyRef Name="ctipoxprogramaclave" />
+          </Key>
+          <Property Name="ctipoxprogramaclave" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cPrograma" Type="int" Nullable="false" />
+          <Property Name="causutipo" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cfg_cUsuarios">
+          <Key>
+            <PropertyRef Name="cUsuClave" />
+          </Key>
+          <Property Name="cUsuClave" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cUsuNombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cUsucontrasena" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cUsuActivo" Type="bit" Nullable="false" />
+          <Property Name="causutipo" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cfg_Programa">
+          <Key>
+            <PropertyRef Name="cPrograma" />
+          </Key>
+          <Property Name="cPrograma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="configuracion">
+          <Key>
+            <PropertyRef Name="Idonfiguracion" />
+          </Key>
+          <Property Name="Idonfiguracion" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaU" Type="date" />
+        </EntityType>
+        <EntityType Name="LOGG">
+          <Key>
+            <PropertyRef Name="Idlog" />
+          </Key>
+          <Property Name="Idlog" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="150" />
+          <Property Name="Mensaje" Type="nvarchar" MaxLength="200" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="hora" Type="time" Precision="7" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'adminpaqcopia.dbo.vtipoxmodulo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vtipoxmodulo">
+          <Key>
+            <PropertyRef Name="causutipo" />
+          </Key>
+          <Property Name="causutipo" Type="smallint" Nullable="false" />
+          <Property Name="cModulo" Type="smallint" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'adminpaqcopia.dbo.vtipoxprograma' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vtipoxprograma">
+          <Key>
+            <PropertyRef Name="causutipo" />
+            <PropertyRef Name="cPrograma" />
+          </Key>
+          <Property Name="causutipo" Type="smallint" Nullable="false" />
+          <Property Name="cPrograma" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios">
+          <End Role="Cfg_AtiposUsuarios" Type="Self.Cfg_AtiposUsuarios" Multiplicity="0..1" />
+          <End Role="Cfg_cModuloxUsuario" Type="Self.Cfg_cModuloxUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cfg_AtiposUsuarios">
+              <PropertyRef Name="causutipo" />
+            </Principal>
+            <Dependent Role="Cfg_cModuloxUsuario">
+              <PropertyRef Name="causutipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios">
+          <End Role="Cfg_AtiposUsuarios" Type="Self.Cfg_AtiposUsuarios" Multiplicity="1" />
+          <End Role="Cfg_cProgramaxTipoUsuario" Type="Self.Cfg_cProgramaxTipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cfg_AtiposUsuarios">
+              <PropertyRef Name="causutipo" />
+            </Principal>
+            <Dependent Role="Cfg_cProgramaxTipoUsuario">
+              <PropertyRef Name="causutipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CambiarContraseña" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Clave" Type="int" Mode="In" />
+          <Parameter Name="contrasena" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="adminpaqModelStoreContainer">
+          <EntitySet Name="Cfg_AtiposUsuarios" EntityType="Self.Cfg_AtiposUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cfg_cModulos" EntityType="Self.Cfg_cModulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cfg_cModuloxUsuario" EntityType="Self.Cfg_cModuloxUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cfg_cProgramaxTipoUsuario" EntityType="Self.Cfg_cProgramaxTipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cfg_cUsuarios" EntityType="Self.Cfg_cUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cfg_Programa" EntityType="Self.Cfg_Programa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="configuracion" EntityType="Self.configuracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGG" EntityType="Self.LOGG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vtipoxmodulo" EntityType="Self.vtipoxmodulo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vtipoxmodulo].[causutipo] AS [causutipo], 
+[vtipoxmodulo].[cModulo] AS [cModulo], 
+[vtipoxmodulo].[Nombre] AS [Nombre]
+FROM [dbo].[vtipoxmodulo] AS [vtipoxmodulo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vtipoxprograma" EntityType="Self.vtipoxprograma" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vtipoxprograma].[causutipo] AS [causutipo], 
+[vtipoxprograma].[cPrograma] AS [cPrograma]
+FROM [dbo].[vtipoxprograma] AS [vtipoxprograma]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" Association="Self.FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios">
+            <End Role="Cfg_AtiposUsuarios" EntitySet="Cfg_AtiposUsuarios" />
+            <End Role="Cfg_cModuloxUsuario" EntitySet="Cfg_cModuloxUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" Association="Self.FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios">
+            <End Role="Cfg_AtiposUsuarios" EntitySet="Cfg_AtiposUsuarios" />
+            <End Role="Cfg_cProgramaxTipoUsuario" EntitySet="Cfg_cProgramaxTipoUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="adminpaqModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="Cfg_AtiposUsuarios">
+          <Key>
+            <PropertyRef Name="causutipo" />
+          </Key>
+          <Property Name="causutipo" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cfg_cModuloxUsuario" Relationship="adminpaqModel.FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" FromRole="Cfg_AtiposUsuarios" ToRole="Cfg_cModuloxUsuario" />
+          <NavigationProperty Name="Cfg_cProgramaxTipoUsuario" Relationship="adminpaqModel.FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" FromRole="Cfg_AtiposUsuarios" ToRole="Cfg_cProgramaxTipoUsuario" />
+        </EntityType>
+        <EntityType Name="Cfg_cModulos">
+          <Key>
+            <PropertyRef Name="cModulo" />
+          </Key>
+          <Property Name="cModulo" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cfg_cModuloxUsuario">
+          <Key>
+            <PropertyRef Name="IdModxusu" />
+          </Key>
+          <Property Name="IdModxusu" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cModulo" Type="Int16" />
+          <NavigationProperty Name="Cfg_AtiposUsuarios" Relationship="adminpaqModel.FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" FromRole="Cfg_cModuloxUsuario" ToRole="Cfg_AtiposUsuarios" />
+        </EntityType>
+        <EntityType Name="Cfg_cProgramaxTipoUsuario">
+          <Key>
+            <PropertyRef Name="ctipoxprogramaclave" />
+          </Key>
+          <Property Name="ctipoxprogramaclave" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cPrograma" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cfg_AtiposUsuarios" Relationship="adminpaqModel.FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" FromRole="Cfg_cProgramaxTipoUsuario" ToRole="Cfg_AtiposUsuarios" />
+        </EntityType>
+        <EntityType Name="Cfg_cUsuarios">
+          <Key>
+            <PropertyRef Name="cUsuClave" />
+          </Key>
+          <Property Name="cUsuClave" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cUsuNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cUsucontrasena" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cUsuActivo" Type="Boolean" Nullable="false" />
+          <Property Name="causutipo" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cfg_Programa">
+          <Key>
+            <PropertyRef Name="cPrograma" />
+          </Key>
+          <Property Name="cPrograma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="configuracion">
+          <Key>
+            <PropertyRef Name="Idonfiguracion" />
+          </Key>
+          <Property Name="Idonfiguracion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaU" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="LOGG">
+          <Key>
+            <PropertyRef Name="Idlog" />
+          </Key>
+          <Property Name="Idlog" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="hora" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="UsuariosEntities">
+          <EntitySet Name="Cfg_AtiposUsuarios" EntityType="Self.Cfg_AtiposUsuarios" />
+          <EntitySet Name="Cfg_cModulos" EntityType="Self.Cfg_cModulos" />
+          <EntitySet Name="Cfg_cModuloxUsuario" EntityType="Self.Cfg_cModuloxUsuario" />
+          <EntitySet Name="Cfg_cProgramaxTipoUsuario" EntityType="Self.Cfg_cProgramaxTipoUsuario" />
+          <EntitySet Name="Cfg_cUsuarios" EntityType="Self.Cfg_cUsuarios" />
+          <EntitySet Name="Cfg_Programa" EntityType="Self.Cfg_Programa" />
+          <EntitySet Name="configuracion" EntityType="Self.configuracion" />
+          <EntitySet Name="LOGG" EntityType="Self.LOGG" />
+          <AssociationSet Name="FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" Association="adminpaqModel.FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios">
+            <End Role="Cfg_AtiposUsuarios" EntitySet="Cfg_AtiposUsuarios" />
+            <End Role="Cfg_cModuloxUsuario" EntitySet="Cfg_cModuloxUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" Association="adminpaqModel.FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios">
+            <End Role="Cfg_AtiposUsuarios" EntitySet="Cfg_AtiposUsuarios" />
+            <End Role="Cfg_cProgramaxTipoUsuario" EntitySet="Cfg_cProgramaxTipoUsuario" />
+          </AssociationSet>
+          <EntitySet Name="vtipoxmoduloes" EntityType="adminpaqModel.vtipoxmodulo" />
+          <EntitySet Name="vtipoxprogramas" EntityType="adminpaqModel.vtipoxprograma" />
+          <FunctionImport Name="CambiarContraseña">
+            <Parameter Name="Clave" Mode="In" Type="Int32" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <Association Name="FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios">
+          <End Type="adminpaqModel.Cfg_AtiposUsuarios" Role="Cfg_AtiposUsuarios" Multiplicity="0..1" />
+          <End Type="adminpaqModel.Cfg_cModuloxUsuario" Role="Cfg_cModuloxUsuario" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios">
+          <End Type="adminpaqModel.Cfg_AtiposUsuarios" Role="Cfg_AtiposUsuarios" Multiplicity="1" />
+          <End Type="adminpaqModel.Cfg_cProgramaxTipoUsuario" Role="Cfg_cProgramaxTipoUsuario" Multiplicity="*" />
+        </Association>
+        <EntityType Name="vtipoxmodulo">
+          <Key>
+            <PropertyRef Name="causutipo" />
+          </Key>
+          <Property Name="causutipo" Type="Int16" Nullable="false" />
+          <Property Name="cModulo" Type="Int16" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vtipoxprograma">
+          <Key>
+            <PropertyRef Name="causutipo" />
+            <PropertyRef Name="cPrograma" />
+          </Key>
+          <Property Name="causutipo" Type="Int16" Nullable="false" />
+          <Property Name="cPrograma" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="adminpaqModelStoreContainer" CdmEntityContainer="UsuariosEntities">
+          <EntitySetMapping Name="Cfg_AtiposUsuarios">
+            <EntityTypeMapping TypeName="adminpaqModel.Cfg_AtiposUsuarios">
+              <MappingFragment StoreEntitySet="Cfg_AtiposUsuarios">
+                <ScalarProperty Name="causutipo" ColumnName="causutipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cfg_cModulos">
+            <EntityTypeMapping TypeName="adminpaqModel.Cfg_cModulos">
+              <MappingFragment StoreEntitySet="Cfg_cModulos">
+                <ScalarProperty Name="cModulo" ColumnName="cModulo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cfg_cModuloxUsuario">
+            <EntityTypeMapping TypeName="adminpaqModel.Cfg_cModuloxUsuario">
+              <MappingFragment StoreEntitySet="Cfg_cModuloxUsuario">
+                <ScalarProperty Name="IdModxusu" ColumnName="IdModxusu" />
+                <ScalarProperty Name="cModulo" ColumnName="cModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cfg_cProgramaxTipoUsuario">
+            <EntityTypeMapping TypeName="adminpaqModel.Cfg_cProgramaxTipoUsuario">
+              <MappingFragment StoreEntitySet="Cfg_cProgramaxTipoUsuario">
+                <ScalarProperty Name="ctipoxprogramaclave" ColumnName="ctipoxprogramaclave" />
+                <ScalarProperty Name="cPrograma" ColumnName="cPrograma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cfg_cUsuarios">
+            <EntityTypeMapping TypeName="adminpaqModel.Cfg_cUsuarios">
+              <MappingFragment StoreEntitySet="Cfg_cUsuarios">
+                <ScalarProperty Name="cUsuClave" ColumnName="cUsuClave" />
+                <ScalarProperty Name="cUsuNombre" ColumnName="cUsuNombre" />
+                <ScalarProperty Name="cUsucontrasena" ColumnName="cUsucontrasena" />
+                <ScalarProperty Name="cUsuActivo" ColumnName="cUsuActivo" />
+                <ScalarProperty Name="causutipo" ColumnName="causutipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cfg_Programa">
+            <EntityTypeMapping TypeName="adminpaqModel.Cfg_Programa">
+              <MappingFragment StoreEntitySet="Cfg_Programa">
+                <ScalarProperty Name="cPrograma" ColumnName="cPrograma" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="configuracion">
+            <EntityTypeMapping TypeName="adminpaqModel.configuracion">
+              <MappingFragment StoreEntitySet="configuracion">
+                <ScalarProperty Name="Idonfiguracion" ColumnName="Idonfiguracion" />
+                <ScalarProperty Name="FechaU" ColumnName="FechaU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGG">
+            <EntityTypeMapping TypeName="adminpaqModel.LOGG">
+              <MappingFragment StoreEntitySet="LOGG">
+                <ScalarProperty Name="Idlog" ColumnName="Idlog" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" TypeName="adminpaqModel.FK_Cfg_cModuloxUsuario_Cfg_AtiposUsuarios" StoreEntitySet="Cfg_cModuloxUsuario">
+            <EndProperty Name="Cfg_cModuloxUsuario">
+              <ScalarProperty Name="IdModxusu" ColumnName="IdModxusu" />
+            </EndProperty>
+            <EndProperty Name="Cfg_AtiposUsuarios">
+              <ScalarProperty Name="causutipo" ColumnName="causutipo" />
+            </EndProperty>
+            <Condition ColumnName="causutipo" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" TypeName="adminpaqModel.FK_Cfg_cProgramaxTipoUsuario_Cfg_AtiposUsuarios" StoreEntitySet="Cfg_cProgramaxTipoUsuario">
+            <EndProperty Name="Cfg_cProgramaxTipoUsuario">
+              <ScalarProperty Name="ctipoxprogramaclave" ColumnName="ctipoxprogramaclave" />
+            </EndProperty>
+            <EndProperty Name="Cfg_AtiposUsuarios">
+              <ScalarProperty Name="causutipo" ColumnName="causutipo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="vtipoxmoduloes">
+            <EntityTypeMapping TypeName="adminpaqModel.vtipoxmodulo">
+              <MappingFragment StoreEntitySet="vtipoxmodulo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="cModulo" ColumnName="cModulo" />
+                <ScalarProperty Name="causutipo" ColumnName="causutipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vtipoxprogramas">
+            <EntityTypeMapping TypeName="adminpaqModel.vtipoxprograma">
+              <MappingFragment StoreEntitySet="vtipoxprograma">
+                <ScalarProperty Name="cPrograma" ColumnName="cPrograma" />
+                <ScalarProperty Name="causutipo" ColumnName="causutipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CambiarContraseña" FunctionName="adminpaqModel.Store.CambiarContraseña" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

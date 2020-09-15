@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57cc80fd7b874751b8503571eb42ae9b" Name="Diagram1" ShowGrid="true">
+        <EntityTypeShape EntityType="TransitosModel.Svp_cAlmacenes" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransitosModel.Svp_cProyectos" Width="1.5" PointX="3.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransitosModel.Svp_CTransito" Width="2.5" PointX="0.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransitosModel.Svp_rTransitosxAlmacen" Width="3.25" PointX="8.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransitosModel.Svp_TransitosTemp" Width="2.375" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="TransitosModel.Svp_DTransitos" Width="2.25" PointX="3.25" PointY="2.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MVI_IPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Mvi_cAlternativas">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cPrdModelo" Type="int" Nullable="false" />
+          <Property Name="cColClave" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="cMatClave" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="cAltPrecioCompra" Type="smallmoney" Nullable="false" />
+          <Property Name="cClPClave" Type="tinyint" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cAltCostoDlls" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="cTiPClave" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mvi_cCalendario">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+          </Key>
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="cCalNoSemana" Type="int" Nullable="false" />
+          <Property Name="cCalAnio" Type="int" Nullable="false" />
+          <Property Name="cCalFechaInicio" Type="smalldatetime" Nullable="false" />
+          <Property Name="cCalFechaFinal" Type="smalldatetime" Nullable="false" />
+          <Property Name="cCalMes" Type="int" Nullable="false" />
+          <Property Name="cCalProcesada" Type="bit" Nullable="false" />
+          <Property Name="cCalExportada" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mvi_cTiposProducto">
+          <Key>
+            <PropertyRef Name="cTiPClave" />
+          </Key>
+          <Property Name="cTiPClave" Type="tinyint" Nullable="false" />
+          <Property Name="cTiPNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cTiPActivo" Type="bit" Nullable="false" />
+          <Property Name="cClPClave" Type="tinyint" Nullable="false" />
+          <Property Name="cTipGenero" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MVI_IPModelStoreContainer">
+          <EntitySet Name="Mvi_cAlternativas" EntityType="Self.Mvi_cAlternativas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mvi_cCalendario" EntityType="Self.Mvi_cCalendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mvi_cTiposProducto" EntityType="Self.Mvi_cTiposProducto" Schema="dbo" store:Type="Tables" />
+          </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVI_IPModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="Mvi_cAlternativas">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cPrdModelo" Type="Int32" Nullable="false" />
+          <Property Name="cColClave" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cMatClave" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cAltPrecioCompra" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="cClPClave" Type="Byte" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cAltCostoDlls" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="cTiPClave" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mvi_cCalendario">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+          </Key>
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="cCalNoSemana" Type="Int32" Nullable="false" />
+          <Property Name="cCalAnio" Type="Int32" Nullable="false" />
+          <Property Name="cCalFechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cCalFechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cCalMes" Type="Int32" Nullable="false" />
+          <Property Name="cCalProcesada" Type="Boolean" Nullable="false" />
+          <Property Name="cCalExportada" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MVI_IPEntities">
+          <EntitySet Name="Mvi_cAlternativas" EntityType="Self.Mvi_cAlternativas" />
+          <EntitySet Name="Mvi_cCalendario" EntityType="Self.Mvi_cCalendario" />
+          <EntitySet Name="Mvi_cTiposProducto" EntityType="MVI_IPModel.Mvi_cTiposProducto" />
+          </EntityContainer>
+        <EntityType Name="Mvi_cTiposProducto">
+          <Key>
+            <PropertyRef Name="cTiPClave" />
+          </Key>
+          <Property Name="cTiPClave" Type="Byte" Nullable="false" />
+          <Property Name="cTiPNombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cTiPActivo" Type="Boolean" Nullable="false" />
+          <Property Name="cClPClave" Type="Byte" Nullable="false" />
+          <Property Name="cTipGenero" Type="Byte" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="MVI_IPModelStoreContainer" CdmEntityContainer="MVI_IPEntities">
+          <EntitySetMapping Name="Mvi_cAlternativas">
+            <EntityTypeMapping TypeName="MVI_IPModel.Mvi_cAlternativas">
+              <MappingFragment StoreEntitySet="Mvi_cAlternativas">
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="cPrdModelo" ColumnName="cPrdModelo" />
+                <ScalarProperty Name="cColClave" ColumnName="cColClave" />
+                <ScalarProperty Name="cMatClave" ColumnName="cMatClave" />
+                <ScalarProperty Name="cAltPrecioCompra" ColumnName="cAltPrecioCompra" />
+                <ScalarProperty Name="cClPClave" ColumnName="cClPClave" />
+                <ScalarProperty Name="cPrvClaveFab" ColumnName="cPrvClaveFab" />
+                <ScalarProperty Name="cAltCostoDlls" ColumnName="cAltCostoDlls" />
+                <ScalarProperty Name="cTiPClave" ColumnName="cTiPClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mvi_cCalendario">
+            <EntityTypeMapping TypeName="MVI_IPModel.Mvi_cCalendario">
+              <MappingFragment StoreEntitySet="Mvi_cCalendario">
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+                <ScalarProperty Name="cCalNoSemana" ColumnName="cCalNoSemana" />
+                <ScalarProperty Name="cCalAnio" ColumnName="cCalAnio" />
+                <ScalarProperty Name="cCalFechaInicio" ColumnName="cCalFechaInicio" />
+                <ScalarProperty Name="cCalFechaFinal" ColumnName="cCalFechaFinal" />
+                <ScalarProperty Name="cCalMes" ColumnName="cCalMes" />
+                <ScalarProperty Name="cCalProcesada" ColumnName="cCalProcesada" />
+                <ScalarProperty Name="cCalExportada" ColumnName="cCalExportada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mvi_cTiposProducto">
+            <EntityTypeMapping TypeName="MVI_IPModel.Mvi_cTiposProducto">
+              <MappingFragment StoreEntitySet="Mvi_cTiposProducto">
+                <ScalarProperty Name="cTipGenero" ColumnName="cTipGenero" />
+                <ScalarProperty Name="cClPClave" ColumnName="cClPClave" />
+                <ScalarProperty Name="cTiPActivo" ColumnName="cTiPActivo" />
+                <ScalarProperty Name="cTiPNombre" ColumnName="cTiPNombre" />
+                <ScalarProperty Name="cTiPClave" ColumnName="cTiPClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

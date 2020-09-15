@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TransitosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Svp_cAlmacenes">
+          <Key>
+            <PropertyRef Name="CAlmClave" />
+          </Key>
+          <Property Name="CAlmClave" Type="smallint" Nullable="false" />
+          <Property Name="CUdNContabilidad" Type="varchar" MaxLength="10" />
+          <Property Name="CAlmNombre" Type="varchar" MaxLength="80" />
+          <Property Name="cAlmPrefijoSIA" Type="varchar" MaxLength="10" />
+          <Property Name="cAlmIPServidor" Type="nchar" MaxLength="15" />
+          <Property Name="cAlmActivo" Type="bit" />
+          <Property Name="cUniversal" Type="bit" />
+        </EntityType>
+        <EntityType Name="Svp_cProyectos">
+          <Key>
+            <PropertyRef Name="cProClave" />
+          </Key>
+          <Property Name="cProClave" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cProNombre" Type="nvarchar" MaxLength="40" />
+          <Property Name="cProFechade" Type="smalldatetime" />
+          <Property Name="cProFechaha" Type="smalldatetime" />
+          <Property Name="Observaciones" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Svp_CTransito">
+          <Key>
+            <PropertyRef Name="cTranClave" />
+          </Key>
+          <Property Name="cTranClave" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cTranNombre" Type="varchar" MaxLength="50" />
+          <Property Name="cTranTipo" Type="bit" Nullable="false" />
+          <Property Name="CTranActivo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Svp_DTransitos">
+          <Key>
+            <PropertyRef Name="mSvpFolioD" />
+          </Key>
+          <Property Name="mSvpFolio" Type="bigint" Nullable="false" />
+          <Property Name="mSvpFolioD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mSvpFolioAlmacen" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="cAlmClaveO" Type="smallint" Nullable="false" />
+          <Property Name="cTranClave" Type="smallint" Nullable="false" />
+          <Property Name="cAlmClaveD" Type="smallint" Nullable="false" />
+          <Property Name="mSvpFechaFolio" Type="smalldatetime" />
+          <Property Name="mSvpReferencia" Type="varchar" MaxLength="100" />
+          <Property Name="mSvpObservaciones" Type="nvarchar" MaxLength="200" />
+          <Property Name="cAltClave" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="UnidadesFolio" Type="bigint" />
+          <Property Name="cProClave" Type="smallint" Nullable="false" />
+          <Property Name="Correcto" Type="bit" />
+        </EntityType>
+        <EntityType Name="Svp_rTransitosxAlmacen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cAlmClave" Type="smallint" Nullable="false" />
+          <Property Name="cTranClave" Type="smallint" Nullable="false" />
+          <Property Name="rMxASQL" Type="nvarchar" MaxLength="4000" />
+          <Property Name="rMxAPrefijoFehca" Type="nvarchar" MaxLength="30" />
+          <Property Name="rMxUActivo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Svp_TransitosTemp">
+          <Key>
+            <PropertyRef Name="mSvpFolio" />
+          </Key>
+          <Property Name="mSvpFolio" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SvpFolioAlmacen" Type="bigint" />
+          <Property Name="cAlmClaveO" Type="smallint" Nullable="false" />
+          <Property Name="cTranClave" Type="smallint" Nullable="false" />
+          <Property Name="mSvpFechaFolio" Type="smalldatetime" />
+          <Property Name="mSvpReferencia" Type="varchar" MaxLength="50" />
+          <Property Name="mSvpObservaciones" Type="varchar" MaxLength="200" />
+          <Property Name="cAlmClaveD" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TransitosModelStoreContainer">
+          <EntitySet Name="Svp_cAlmacenes" EntityType="Self.Svp_cAlmacenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Svp_cProyectos" EntityType="Self.Svp_cProyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Svp_CTransito" EntityType="Self.Svp_CTransito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Svp_DTransitos" EntityType="Self.Svp_DTransitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Svp_rTransitosxAlmacen" EntityType="Self.Svp_rTransitosxAlmacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Svp_TransitosTemp" EntityType="Self.Svp_TransitosTemp" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransitosModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="Svp_cAlmacenes">
+          <Key>
+            <PropertyRef Name="CAlmClave" />
+          </Key>
+          <Property Name="CAlmClave" Type="Int16" Nullable="false" />
+          <Property Name="CUdNContabilidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CAlmNombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="cAlmPrefijoSIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cAlmIPServidor" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="cAlmActivo" Type="Boolean" />
+          <Property Name="cUniversal" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Svp_cProyectos">
+          <Key>
+            <PropertyRef Name="cProClave" />
+          </Key>
+          <Property Name="cProClave" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cProNombre" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="cProFechade" Type="DateTime" Precision="0" />
+          <Property Name="cProFechaha" Type="DateTime" Precision="0" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Svp_CTransito">
+          <Key>
+            <PropertyRef Name="cTranClave" />
+          </Key>
+          <Property Name="cTranClave" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cTranNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cTranTipo" Type="Boolean" Nullable="false" />
+          <Property Name="CTranActivo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Svp_rTransitosxAlmacen">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="cAlmClave" Type="Int16" Nullable="false" />
+          <Property Name="cTranClave" Type="Int16" Nullable="false" />
+          <Property Name="rMxASQL" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="rMxAPrefijoFehca" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="rMxUActivo" Type="Boolean" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="TransitosEntities">
+          <EntitySet Name="Svp_cAlmacenes" EntityType="Self.Svp_cAlmacenes" />
+          <EntitySet Name="Svp_cProyectos" EntityType="Self.Svp_cProyectos" />
+          <EntitySet Name="Svp_CTransito" EntityType="Self.Svp_CTransito" />
+          <EntitySet Name="Svp_rTransitosxAlmacen" EntityType="Self.Svp_rTransitosxAlmacen" />
+          <EntitySet Name="Svp_TransitosTemp" EntityType="TransitosModel.Svp_TransitosTemp" />
+          <EntitySet Name="Svp_DTransitos" EntityType="TransitosModel.Svp_DTransitos" />
+        </EntityContainer>
+        <EntityType Name="Svp_TransitosTemp">
+          <Key>
+            <PropertyRef Name="mSvpFolio" />
+          </Key>
+          <Property Name="mSvpFolio" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SvpFolioAlmacen" Type="Int64" />
+          <Property Name="cAlmClaveO" Type="Int16" Nullable="false" />
+          <Property Name="cTranClave" Type="Int16" Nullable="false" />
+          <Property Name="mSvpFechaFolio" Type="DateTime" Precision="0" />
+          <Property Name="mSvpReferencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mSvpObservaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cAlmClaveD" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Svp_DTransitos">
+          <Key>
+            <PropertyRef Name="mSvpFolioD" />
+          </Key>
+          <Property Name="mSvpFolio" Type="Int64" Nullable="false" />
+          <Property Name="mSvpFolioD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mSvpFolioAlmacen" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cAlmClaveO" Type="Int16" Nullable="false" />
+          <Property Name="cTranClave" Type="Int16" Nullable="false" />
+          <Property Name="cAlmClaveD" Type="Int16" Nullable="false" />
+          <Property Name="mSvpFechaFolio" Type="DateTime" Precision="0" />
+          <Property Name="mSvpReferencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mSvpObservaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cAltClave" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="UnidadesFolio" Type="Int64" />
+          <Property Name="cProClave" Type="Int16" Nullable="false" />
+          <Property Name="Correcto" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="TransitosModelStoreContainer" CdmEntityContainer="TransitosEntities">
+          <EntitySetMapping Name="Svp_cAlmacenes">
+            <EntityTypeMapping TypeName="TransitosModel.Svp_cAlmacenes">
+              <MappingFragment StoreEntitySet="Svp_cAlmacenes">
+                <ScalarProperty Name="CAlmClave" ColumnName="CAlmClave" />
+                <ScalarProperty Name="CUdNContabilidad" ColumnName="CUdNContabilidad" />
+                <ScalarProperty Name="CAlmNombre" ColumnName="CAlmNombre" />
+                <ScalarProperty Name="cAlmPrefijoSIA" ColumnName="cAlmPrefijoSIA" />
+                <ScalarProperty Name="cAlmIPServidor" ColumnName="cAlmIPServidor" />
+                <ScalarProperty Name="cAlmActivo" ColumnName="cAlmActivo" />
+                <ScalarProperty Name="cUniversal" ColumnName="cUniversal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Svp_cProyectos">
+            <EntityTypeMapping TypeName="TransitosModel.Svp_cProyectos">
+              <MappingFragment StoreEntitySet="Svp_cProyectos">
+                <ScalarProperty Name="cProClave" ColumnName="cProClave" />
+                <ScalarProperty Name="cProNombre" ColumnName="cProNombre" />
+                <ScalarProperty Name="cProFechade" ColumnName="cProFechade" />
+                <ScalarProperty Name="cProFechaha" ColumnName="cProFechaha" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Svp_CTransito">
+            <EntityTypeMapping TypeName="TransitosModel.Svp_CTransito">
+              <MappingFragment StoreEntitySet="Svp_CTransito">
+                <ScalarProperty Name="cTranClave" ColumnName="cTranClave" />
+                <ScalarProperty Name="cTranNombre" ColumnName="cTranNombre" />
+                <ScalarProperty Name="cTranTipo" ColumnName="cTranTipo" />
+                <ScalarProperty Name="CTranActivo" ColumnName="CTranActivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Svp_rTransitosxAlmacen">
+            <EntityTypeMapping TypeName="TransitosModel.Svp_rTransitosxAlmacen">
+              <MappingFragment StoreEntitySet="Svp_rTransitosxAlmacen">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cAlmClave" ColumnName="cAlmClave" />
+                <ScalarProperty Name="cTranClave" ColumnName="cTranClave" />
+                <ScalarProperty Name="rMxASQL" ColumnName="rMxASQL" />
+                <ScalarProperty Name="rMxAPrefijoFehca" ColumnName="rMxAPrefijoFehca" />
+                <ScalarProperty Name="rMxUActivo" ColumnName="rMxUActivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Svp_TransitosTemp">
+            <EntityTypeMapping TypeName="TransitosModel.Svp_TransitosTemp">
+              <MappingFragment StoreEntitySet="Svp_TransitosTemp">
+                <ScalarProperty Name="cAlmClaveD" ColumnName="cAlmClaveD" />
+                <ScalarProperty Name="mSvpObservaciones" ColumnName="mSvpObservaciones" />
+                <ScalarProperty Name="mSvpReferencia" ColumnName="mSvpReferencia" />
+                <ScalarProperty Name="mSvpFechaFolio" ColumnName="mSvpFechaFolio" />
+                <ScalarProperty Name="cTranClave" ColumnName="cTranClave" />
+                <ScalarProperty Name="cAlmClaveO" ColumnName="cAlmClaveO" />
+                <ScalarProperty Name="SvpFolioAlmacen" ColumnName="SvpFolioAlmacen" />
+                <ScalarProperty Name="mSvpFolio" ColumnName="mSvpFolio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Svp_DTransitos">
+            <EntityTypeMapping TypeName="TransitosModel.Svp_DTransitos">
+              <MappingFragment StoreEntitySet="Svp_DTransitos">
+                <ScalarProperty Name="Correcto" ColumnName="Correcto" />
+                <ScalarProperty Name="cProClave" ColumnName="cProClave" />
+                <ScalarProperty Name="UnidadesFolio" ColumnName="UnidadesFolio" />
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="mSvpObservaciones" ColumnName="mSvpObservaciones" />
+                <ScalarProperty Name="mSvpReferencia" ColumnName="mSvpReferencia" />
+                <ScalarProperty Name="mSvpFechaFolio" ColumnName="mSvpFechaFolio" />
+                <ScalarProperty Name="cAlmClaveD" ColumnName="cAlmClaveD" />
+                <ScalarProperty Name="cTranClave" ColumnName="cTranClave" />
+                <ScalarProperty Name="cAlmClaveO" ColumnName="cAlmClaveO" />
+                <ScalarProperty Name="mSvpFolioAlmacen" ColumnName="mSvpFolioAlmacen" />
+                <ScalarProperty Name="mSvpFolioD" ColumnName="mSvpFolioD" />
+                <ScalarProperty Name="mSvpFolio" ColumnName="mSvpFolio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

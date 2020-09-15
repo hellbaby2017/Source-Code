@@ -1,0 +1,876 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="adminpaqcopiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="AInventarioT">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Unidades" Type="bigint" />
+          <Property Name="Costo" Type="decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="amovimientosmviT">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cMoAClave" />
+          </Key>
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="cMoAClave" Type="tinyint" Nullable="false" />
+          <Property Name="cMoAnombre" Type="varchar" MaxLength="50" />
+          <Property Name="Unidadesmvi" Type="bigint" />
+          <Property Name="Unidadesexp" Type="int" Nullable="false" />
+          <Property Name="diferencia" Type="bigint" />
+        </EntityType>
+        <EntityType Name="amovimientosT">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cMoANombre" />
+          </Key>
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="cMoANombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Suma" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cmovimientosalmacen">
+          <Key>
+            <PropertyRef Name="cMoAClave" />
+          </Key>
+          <Property Name="cMoAClave" Type="tinyint" Nullable="false" />
+          <Property Name="cMoANombre" Type="varchar" MaxLength="50" />
+          <Property Name="cMoATipoMovto" Type="bit" Nullable="false" />
+          <Property Name="cMoAIntegrado" Type="bit" />
+        </EntityType>
+        <EntityType Name="existenciar">
+          <Key>
+            <PropertyRef Name="IdMov" />
+          </Key>
+          <Property Name="IdMov" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO" Type="nchar" MaxLength="10" />
+          <Property Name="MES" Type="int" />
+          <Property Name="ANO" Type="int" />
+          <Property Name="CVEUDNO" Type="int" />
+          <Property Name="NOMBREO" Type="nchar" MaxLength="40" />
+          <Property Name="CVEUDND" Type="int" />
+          <Property Name="NOMBRED" Type="nchar" MaxLength="40" />
+          <Property Name="ALTERNATIVA" Type="nchar" MaxLength="11" />
+          <Property Name="UNIDADES" Type="int" />
+          <Property Name="FUE" Type="nchar" MaxLength="30" />
+          <Property Name="MACROFOLIO" Type="nchar" MaxLength="30" />
+          <Property Name="FOLIO" Type="nchar" MaxLength="30" />
+          <Property Name="MORSFOLIO" Type="nchar" MaxLength="30" />
+          <Property Name="RCAJAMACRO" Type="nchar" MaxLength="30" />
+          <Property Name="UBICACION" Type="nchar" MaxLength="30" />
+          <Property Name="OBSERVACIONES" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOGG">
+          <Key>
+            <PropertyRef Name="Idlog" />
+          </Key>
+          <Property Name="Idlog" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="150" />
+          <Property Name="Mensaje" Type="nvarchar" MaxLength="200" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="hora" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="mcapas">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Costo" Type="money" Nullable="false" />
+          <Property Name="unidades" Type="bigint" />
+          <Property Name="importe" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mmovimientos">
+          <Key>
+            <PropertyRef Name="idMMovimientos" />
+          </Key>
+          <Property Name="idMMovimientos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cMoAClave" Type="int" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="char" MaxLength="10" />
+          <Property Name="mMSIRemision" Type="varchar" MaxLength="20" />
+          <Property Name="mMSIFactura" Type="varchar" MaxLength="40" />
+          <Property Name="mMSILote" Type="varchar" MaxLength="10" />
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="mMSIFecha" Type="datetime" />
+          <Property Name="mMSIFechaFactura" Type="datetime" />
+          <Property Name="mMSIPedimento" Type="varchar" MaxLength="40" />
+          <Property Name="Unidades" Type="bigint" />
+          <Property Name="Costo" Type="money" />
+          <Property Name="mMSIFolio" Type="int" />
+          <Property Name="mMSICostoP" Type="money" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cAlmClave" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mmovresp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMMovimientos" Type="int" />
+          <Property Name="cMoAClave" Type="tinyint" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="varchar" MaxLength="10" />
+          <Property Name="mMSIRemision" Type="varchar" MaxLength="20" />
+          <Property Name="mMSIFactura" Type="varchar" MaxLength="40" />
+          <Property Name="mMSILote" Type="varchar" MaxLength="10" />
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="mMSIFecha" Type="datetime" />
+          <Property Name="mMSIFechaFactura" Type="datetime" />
+          <Property Name="mMSIPedimento" Type="varchar" MaxLength="40" />
+          <Property Name="Unidades" Type="bigint" Nullable="false" />
+          <Property Name="Costo" Type="money" />
+          <Property Name="mMSIFolio" Type="int" />
+          <Property Name="mMSICostoP" Type="money" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cAlmClave" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mmovtmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMMovimientos" Type="int" />
+          <Property Name="cMoAClave" Type="tinyint" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="varchar" MaxLength="10" />
+          <Property Name="mMSIRemision" Type="varchar" MaxLength="20" />
+          <Property Name="mMSIFactura" Type="varchar" MaxLength="40" />
+          <Property Name="mMSILote" Type="varchar" MaxLength="10" />
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="mMSIFecha" Type="datetime" />
+          <Property Name="mMSIFechaFactura" Type="datetime" />
+          <Property Name="mMSIPedimento" Type="varchar" MaxLength="40" />
+          <Property Name="Unidades" Type="bigint" Nullable="false" />
+          <Property Name="Costo" Type="money" />
+          <Property Name="mMSIFolio" Type="int" />
+          <Property Name="mMSICostoP" Type="money" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cAlmClave" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mtemp">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Costo" Type="money" Nullable="false" />
+          <Property Name="unidades" Type="bigint" />
+          <Property Name="importe" Type="money" Nullable="false" />
+          <Property Name="MES" Type="int" Nullable="false" />
+          <Property Name="ANO" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'adminpaqcopia.dbo.amovimientos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="amovimientos">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cMoANombre" />
+          </Key>
+          <Property Name="cMoANombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="Suma" Type="bigint" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'adminpaqcopia.dbo.V_MOVADICIONALES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="V_MOVADICIONALES">
+          <Key>
+            <PropertyRef Name="idMMovimientos" />
+            <PropertyRef Name="cMoAClave" />
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cAltClave" />
+            <PropertyRef Name="cAlmClave" />
+          </Key>
+          <Property Name="idMMovimientos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cMoAClave" Type="int" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="char" MaxLength="10" />
+          <Property Name="mMSIRemision" Type="varchar" MaxLength="20" />
+          <Property Name="mMSIFactura" Type="varchar" MaxLength="40" />
+          <Property Name="mMSILote" Type="varchar" MaxLength="10" />
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="mMSIFecha" Type="datetime" />
+          <Property Name="mMSIFechaFactura" Type="datetime" />
+          <Property Name="mMSIPedimento" Type="varchar" MaxLength="40" />
+          <Property Name="Unidades" Type="bigint" />
+          <Property Name="Costo" Type="money" />
+          <Property Name="mMSIFolio" Type="int" />
+          <Property Name="mMSICostoP" Type="money" />
+          <Property Name="Detalle" Type="varchar" MaxLength="45" />
+          <Property Name="cAltClave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cAlmClave" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'adminpaqcopia.dbo.vagrupadosemana' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vagrupadosemana">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+          </Key>
+          <Property Name="cCalClave" Type="int" Nullable="false" />
+          <Property Name="Unidades" Type="bigint" />
+        </EntityType>
+        <Function Name="AInventario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AInventarioI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="amovimientosmvi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CLAVE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CostoxAlt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaini" Type="datetime" Mode="In" />
+          <Parameter Name="fechafin" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="KARDEX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaini" Type="datetime" Mode="In" />
+          <Parameter Name="fechafin" Type="datetime" Mode="In" />
+          <Parameter Name="alternativa" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ReprocesarAlt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="alternativa" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ReprocesarFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="adminpaqcopiaModelStoreContainer">
+          <EntitySet Name="AInventarioT" EntityType="Self.AInventarioT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amovimientosmviT" EntityType="Self.amovimientosmviT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amovimientosT" EntityType="Self.amovimientosT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cmovimientosalmacen" EntityType="Self.cmovimientosalmacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="existenciar" EntityType="Self.existenciar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGG" EntityType="Self.LOGG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mcapas" EntityType="Self.mcapas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mmovimientos" EntityType="Self.mmovimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mmovresp" EntityType="Self.mmovresp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mmovtmp" EntityType="Self.mmovtmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mtemp" EntityType="Self.mtemp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amovimientos" EntityType="Self.amovimientos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[amovimientos].[cMoANombre] AS [cMoANombre], 
+[amovimientos].[cCalClave] AS [cCalClave], 
+[amovimientos].[Suma] AS [Suma]
+FROM [dbo].[amovimientos] AS [amovimientos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_MOVADICIONALES" EntityType="Self.V_MOVADICIONALES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_MOVADICIONALES].[idMMovimientos] AS [idMMovimientos], 
+[V_MOVADICIONALES].[cMoAClave] AS [cMoAClave], 
+[V_MOVADICIONALES].[cPrvClaveFab] AS [cPrvClaveFab], 
+[V_MOVADICIONALES].[mMSIRemision] AS [mMSIRemision], 
+[V_MOVADICIONALES].[mMSIFactura] AS [mMSIFactura], 
+[V_MOVADICIONALES].[mMSILote] AS [mMSILote], 
+[V_MOVADICIONALES].[cCalClave] AS [cCalClave], 
+[V_MOVADICIONALES].[mMSIFecha] AS [mMSIFecha], 
+[V_MOVADICIONALES].[mMSIFechaFactura] AS [mMSIFechaFactura], 
+[V_MOVADICIONALES].[mMSIPedimento] AS [mMSIPedimento], 
+[V_MOVADICIONALES].[Unidades] AS [Unidades], 
+[V_MOVADICIONALES].[Costo] AS [Costo], 
+[V_MOVADICIONALES].[mMSIFolio] AS [mMSIFolio], 
+[V_MOVADICIONALES].[mMSICostoP] AS [mMSICostoP], 
+[V_MOVADICIONALES].[Detalle] AS [Detalle], 
+[V_MOVADICIONALES].[cAltClave] AS [cAltClave], 
+[V_MOVADICIONALES].[cAlmClave] AS [cAlmClave]
+FROM [dbo].[V_MOVADICIONALES] AS [V_MOVADICIONALES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vagrupadosemana" EntityType="Self.vagrupadosemana" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vagrupadosemana].[cCalClave] AS [cCalClave], 
+[vagrupadosemana].[Unidades] AS [Unidades]
+FROM [dbo].[vagrupadosemana] AS [vagrupadosemana]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="adminpaqcopiaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="cmovimientosalmacen">
+          <Key>
+            <PropertyRef Name="cMoAClave" />
+          </Key>
+          <Property Name="cMoAClave" Type="Byte" Nullable="false" />
+          <Property Name="cMoANombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cMoATipoMovto" Type="Boolean" Nullable="false" />
+          <Property Name="cMoAIntegrado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="existenciar">
+          <Key>
+            <PropertyRef Name="IdMov" />
+          </Key>
+          <Property Name="IdMov" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MES" Type="Int32" />
+          <Property Name="ANO" Type="Int32" />
+          <Property Name="CVEUDNO" Type="Int32" />
+          <Property Name="NOMBREO" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="CVEUDND" Type="Int32" />
+          <Property Name="NOMBRED" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="ALTERNATIVA" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="UNIDADES" Type="Int32" />
+          <Property Name="FUE" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="MACROFOLIO" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="FOLIO" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="MORSFOLIO" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="RCAJAMACRO" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="UBICACION" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="OBSERVACIONES" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOGG">
+          <Key>
+            <PropertyRef Name="Idlog" />
+          </Key>
+          <Property Name="Idlog" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Mensaje" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="hora" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="mcapas">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="unidades" Type="Int64" />
+          <Property Name="importe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mmovimientos">
+          <Key>
+            <PropertyRef Name="idMMovimientos" />
+          </Key>
+          <Property Name="idMMovimientos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cMoAClave" Type="Int32" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mMSIRemision" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mMSIFactura" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mMSILote" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="mMSIFecha" Type="DateTime" Precision="3" />
+          <Property Name="mMSIFechaFactura" Type="DateTime" Precision="3" />
+          <Property Name="mMSIPedimento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Unidades" Type="Int64" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mMSIFolio" Type="Int32" />
+          <Property Name="mMSICostoP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cAltClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cAlmClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mtemp">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="unidades" Type="Int64" />
+          <Property Name="importe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="MES" Type="Int32" Nullable="false" />
+          <Property Name="ANO" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mmovresp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="idMMovimientos" Type="Int32" />
+          <Property Name="cMoAClave" Type="Byte" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mMSIRemision" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mMSIFactura" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mMSILote" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="mMSIFecha" Type="DateTime" Precision="3" />
+          <Property Name="mMSIFechaFactura" Type="DateTime" Precision="3" />
+          <Property Name="mMSIPedimento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Unidades" Type="Int64" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mMSIFolio" Type="Int32" />
+          <Property Name="mMSICostoP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cAltClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cAlmClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="mmovtmp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="idMMovimientos" Type="Int32" />
+          <Property Name="cMoAClave" Type="Byte" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="mMSIRemision" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mMSIFactura" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mMSILote" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="mMSIFecha" Type="DateTime" Precision="3" />
+          <Property Name="mMSIFechaFactura" Type="DateTime" Precision="3" />
+          <Property Name="mMSIPedimento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Unidades" Type="Int64" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mMSIFolio" Type="Int32" />
+          <Property Name="mMSICostoP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cAltClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cAlmClave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="amovimientos">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cMoANombre" />
+          </Key>
+          <Property Name="cMoANombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="Suma" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="adminpaqEntities">
+          <EntitySet Name="cmovimientosalmacen" EntityType="Self.cmovimientosalmacen" />
+          <EntitySet Name="existenciar" EntityType="Self.existenciar" />
+          <EntitySet Name="LOGG" EntityType="Self.LOGG" />
+          <EntitySet Name="mcapas" EntityType="Self.mcapas" />
+          <EntitySet Name="mmovimientos" EntityType="Self.mmovimientos" />
+          <EntitySet Name="mtemp" EntityType="Self.mtemp" />
+          <EntitySet Name="mmovresp" EntityType="Self.mmovresp" />
+          <EntitySet Name="mmovtmp" EntityType="Self.mmovtmp" />
+          <EntitySet Name="amovimientos" EntityType="Self.amovimientos" />
+          <FunctionImport Name="AInventario" />
+          <FunctionImport Name="KARDEX">
+            <Parameter Name="fechaini" Mode="In" Type="DateTime" />
+            <Parameter Name="fechafin" Mode="In" Type="DateTime" />
+            <Parameter Name="alternativa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReprocesarAlt">
+          <Parameter Name="alternativa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ReprocesarFecha">
+          <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AInventarioI" />
+          <FunctionImport Name="BorrarSemana">
+          <Parameter Name="Semana" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="amovimientosmvi" EntitySet="amovimientosmviTs" ReturnType="Collection(adminpaqcopiaModel.amovimientosmviT)">
+          <Parameter Name="CLAVE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CostoxAlt">
+            <Parameter Name="fechaini" Mode="In" Type="DateTime" />
+            <Parameter Name="fechafin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="amovimientosmviTs" EntityType="adminpaqcopiaModel.amovimientosmviT" />
+          <EntitySet Name="amovimientosTs" EntityType="adminpaqcopiaModel.amovimientosT" />
+          <EntitySet Name="AInventarioTs" EntityType="adminpaqcopiaModel.AInventarioT" />
+          <EntitySet Name="vagrupadosemanas" EntityType="adminpaqcopiaModel.vagrupadosemana" />
+          <EntitySet Name="V_MOVADICIONALES" EntityType="adminpaqcopiaModel.V_MOVADICIONALES" />
+        </EntityContainer>
+        <ComplexType Name="AInventario_Result">
+          <Property Type="String" Name="cAltClave" Nullable="false" MaxLength="10" />
+          <Property Type="Int64" Name="Unidades" Nullable="true" />
+          <Property Type="Decimal" Name="Costo" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="KARDEX_Result">
+          <Property Type="Int64" Name="Numero" Nullable="true" />
+          <Property Type="DateTime" Name="mMSIFecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="cAltClave" Nullable="false" MaxLength="10" />
+          <Property Type="Byte" Name="cMoAClave" Nullable="false" />
+          <Property Type="String" Name="cMoANombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="unidades" Nullable="true" />
+          <Property Type="Int64" Name="totalacumulado" Nullable="true" />
+          <Property Type="Decimal" Name="Costo" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="importe" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="totalimporte" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="ReprocesarAlt_Result">
+          <Property Type="Byte" Name="cMoAClave" Nullable="false" />
+          <Property Type="String" Name="cPrvClaveFab" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="mMSIRemision" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="mMSIFactura" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="mMSILote" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="cCalClave" Nullable="false" />
+          <Property Type="DateTime" Name="mMSIFecha" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="mMSIFechaFactura" Nullable="true" Precision="23" />
+          <Property Type="String" Name="mMSIPedimento" Nullable="true" MaxLength="40" />
+          <Property Type="Int64" Name="Unidades" Nullable="false" />
+          <Property Type="Decimal" Name="costo" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="mMSIFolio" Nullable="true" />
+          <Property Type="Decimal" Name="CostoP" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Detalle" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="cAltClave" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="cAlmClave" Nullable="false" MaxLength="10" />
+          <Property Type="Boolean" Name="cMoATipoMovto" Nullable="false" />
+          <Property Type="Int32" Name="cCalAnio" Nullable="false" />
+          <Property Type="Int32" Name="cCalNoSemana" Nullable="false" />
+          <Property Type="Boolean" Name="cMoAIntegrado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ReprocesarFecha_Result">
+          <Property Type="Byte" Name="cMoAClave" Nullable="false" />
+          <Property Type="String" Name="cPrvClaveFab" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="mMSIRemision" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="mMSIFactura" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="mMSILote" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="cCalClave" Nullable="false" />
+          <Property Type="DateTime" Name="mMSIFecha" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="mMSIFechaFactura" Nullable="true" Precision="23" />
+          <Property Type="String" Name="mMSIPedimento" Nullable="true" MaxLength="40" />
+          <Property Type="Int64" Name="Unidades" Nullable="false" />
+          <Property Type="Decimal" Name="costo" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="mMSIFolio" Nullable="true" />
+          <Property Type="Decimal" Name="CostoP" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Detalle" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="cAltClave" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="cAlmClave" Nullable="false" MaxLength="10" />
+          <Property Type="Boolean" Name="cMoATipoMovto" Nullable="false" />
+          <Property Type="Int32" Name="cCalAnio" Nullable="false" />
+          <Property Type="Int32" Name="cCalNoSemana" Nullable="false" />
+          <Property Type="Boolean" Name="cMoAIntegrado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="amovimientosmvi_Result">
+          <Property Type="Int32" Name="cCalClave" Nullable="true" ConcurrencyMode="None" />
+          <Property Type="Byte" Name="cMoAClave" Nullable="false" />
+          <Property Type="String" Name="cMoANombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="Unidadesmvi" Nullable="true" />
+          <Property Type="Int32" Name="unidadesexp" Nullable="false" />
+          <Property Type="Int64" Name="diferencia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CostoxAlt_Result">
+          <Property Type="String" Name="tipo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="cAltClave" Nullable="false" MaxLength="10" />
+          <Property Type="Int64" Name="unidades" Nullable="true" />
+          <Property Type="Decimal" Name="Costo" Nullable="true" Precision="19" />
+        </ComplexType>
+        <EntityType Name="amovimientosmviT">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cMoAClave" />
+          </Key>
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="cMoAClave" Type="Byte" Nullable="false" />
+          <Property Name="cMoAnombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Unidadesmvi" Type="Int64" />
+          <Property Name="Unidadesexp" Type="Int32" Nullable="false" />
+          <Property Name="diferencia" Type="Int64" />
+        </EntityType>
+        <EntityType Name="amovimientosT">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cMoANombre" />
+          </Key>
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="cMoANombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Suma" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AInventarioT">
+          <Key>
+            <PropertyRef Name="cAltClave" />
+          </Key>
+          <Property Name="cAltClave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Unidades" Type="Int64" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="vagrupadosemana">
+          <Key>
+            <PropertyRef Name="cCalClave" />
+          </Key>
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="Unidades" Type="Int64" />
+        </EntityType>
+        <EntityType Name="V_MOVADICIONALES">
+          <Key>
+            <PropertyRef Name="idMMovimientos" />
+            <PropertyRef Name="cMoAClave" />
+            <PropertyRef Name="cCalClave" />
+            <PropertyRef Name="cAltClave" />
+            <PropertyRef Name="cAlmClave" />
+          </Key>
+          <Property Name="idMMovimientos" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cMoAClave" Type="Int32" Nullable="false" />
+          <Property Name="cPrvClaveFab" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mMSIRemision" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mMSIFactura" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mMSILote" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cCalClave" Type="Int32" Nullable="false" />
+          <Property Name="mMSIFecha" Type="DateTime" Precision="3" />
+          <Property Name="mMSIFechaFactura" Type="DateTime" Precision="3" />
+          <Property Name="mMSIPedimento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Unidades" Type="Int64" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="mMSIFolio" Type="Int32" />
+          <Property Name="mMSICostoP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Detalle" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cAltClave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cAlmClave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="CMOVEXPORTAR_Result">
+          <Property Type="Byte" Name="cMoAClave" Nullable="false" />
+          <Property Type="String" Name="cPrvClaveFab" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="mMSIRemision" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="mMSIFactura" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="mMSILote" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="cCalClave" Nullable="false" />
+          <Property Type="DateTime" Name="mMSIFecha" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="mMSIFechaFactura" Nullable="true" Precision="23" />
+          <Property Type="String" Name="mMSIPedimento" Nullable="false" MaxLength="30" />
+          <Property Type="Int64" Name="Unidades" Nullable="true" />
+          <Property Type="Decimal" Name="COSTO" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="CostoP" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int64" Name="mMSIFolio" Nullable="false" />
+          <Property Type="Decimal" Name="mMSICosto" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="String" Name="DETALLE" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="cAltClave" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="cAlmClave" Nullable="false" />
+          <Property Type="Boolean" Name="cMoATipoMovto" Nullable="false" />
+          <Property Type="Int32" Name="cCalNoSemana" Nullable="false" />
+          <Property Type="Int32" Name="cCalAnio" Nullable="false" />
+          <Property Type="Boolean" Name="cMoAIntegrado" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="adminpaqcopiaModelStoreContainer" CdmEntityContainer="adminpaqEntities">
+          <EntitySetMapping Name="cmovimientosalmacen">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.cmovimientosalmacen">
+              <MappingFragment StoreEntitySet="cmovimientosalmacen">
+                <ScalarProperty Name="cMoAClave" ColumnName="cMoAClave" />
+                <ScalarProperty Name="cMoANombre" ColumnName="cMoANombre" />
+                <ScalarProperty Name="cMoATipoMovto" ColumnName="cMoATipoMovto" />
+                <ScalarProperty Name="cMoAIntegrado" ColumnName="cMoAIntegrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="existenciar">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.existenciar">
+              <MappingFragment StoreEntitySet="existenciar">
+                <ScalarProperty Name="IdMov" ColumnName="IdMov" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="MES" ColumnName="MES" />
+                <ScalarProperty Name="ANO" ColumnName="ANO" />
+                <ScalarProperty Name="CVEUDNO" ColumnName="CVEUDNO" />
+                <ScalarProperty Name="NOMBREO" ColumnName="NOMBREO" />
+                <ScalarProperty Name="CVEUDND" ColumnName="CVEUDND" />
+                <ScalarProperty Name="NOMBRED" ColumnName="NOMBRED" />
+                <ScalarProperty Name="ALTERNATIVA" ColumnName="ALTERNATIVA" />
+                <ScalarProperty Name="UNIDADES" ColumnName="UNIDADES" />
+                <ScalarProperty Name="FUE" ColumnName="FUE" />
+                <ScalarProperty Name="MACROFOLIO" ColumnName="MACROFOLIO" />
+                <ScalarProperty Name="FOLIO" ColumnName="FOLIO" />
+                <ScalarProperty Name="MORSFOLIO" ColumnName="MORSFOLIO" />
+                <ScalarProperty Name="RCAJAMACRO" ColumnName="RCAJAMACRO" />
+                <ScalarProperty Name="UBICACION" ColumnName="UBICACION" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGG">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.LOGG">
+              <MappingFragment StoreEntitySet="LOGG">
+                <ScalarProperty Name="Idlog" ColumnName="Idlog" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mcapas">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.mcapas">
+              <MappingFragment StoreEntitySet="mcapas">
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="unidades" ColumnName="unidades" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mmovimientos">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.mmovimientos">
+              <MappingFragment StoreEntitySet="mmovimientos">
+                <ScalarProperty Name="idMMovimientos" ColumnName="idMMovimientos" />
+                <ScalarProperty Name="cMoAClave" ColumnName="cMoAClave" />
+                <ScalarProperty Name="cPrvClaveFab" ColumnName="cPrvClaveFab" />
+                <ScalarProperty Name="mMSIRemision" ColumnName="mMSIRemision" />
+                <ScalarProperty Name="mMSIFactura" ColumnName="mMSIFactura" />
+                <ScalarProperty Name="mMSILote" ColumnName="mMSILote" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+                <ScalarProperty Name="mMSIFecha" ColumnName="mMSIFecha" />
+                <ScalarProperty Name="mMSIFechaFactura" ColumnName="mMSIFechaFactura" />
+                <ScalarProperty Name="mMSIPedimento" ColumnName="mMSIPedimento" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="mMSIFolio" ColumnName="mMSIFolio" />
+                <ScalarProperty Name="mMSICostoP" ColumnName="mMSICostoP" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="cAlmClave" ColumnName="cAlmClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mtemp">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.mtemp">
+              <MappingFragment StoreEntitySet="mtemp">
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="unidades" ColumnName="unidades" />
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="MES" ColumnName="MES" />
+                <ScalarProperty Name="ANO" ColumnName="ANO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mmovresp">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.mmovresp">
+              <MappingFragment StoreEntitySet="mmovresp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idMMovimientos" ColumnName="idMMovimientos" />
+                <ScalarProperty Name="cMoAClave" ColumnName="cMoAClave" />
+                <ScalarProperty Name="cPrvClaveFab" ColumnName="cPrvClaveFab" />
+                <ScalarProperty Name="mMSIRemision" ColumnName="mMSIRemision" />
+                <ScalarProperty Name="mMSIFactura" ColumnName="mMSIFactura" />
+                <ScalarProperty Name="mMSILote" ColumnName="mMSILote" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+                <ScalarProperty Name="mMSIFecha" ColumnName="mMSIFecha" />
+                <ScalarProperty Name="mMSIFechaFactura" ColumnName="mMSIFechaFactura" />
+                <ScalarProperty Name="mMSIPedimento" ColumnName="mMSIPedimento" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="mMSIFolio" ColumnName="mMSIFolio" />
+                <ScalarProperty Name="mMSICostoP" ColumnName="mMSICostoP" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="cAlmClave" ColumnName="cAlmClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mmovtmp">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.mmovtmp">
+              <MappingFragment StoreEntitySet="mmovtmp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idMMovimientos" ColumnName="idMMovimientos" />
+                <ScalarProperty Name="cMoAClave" ColumnName="cMoAClave" />
+                <ScalarProperty Name="cPrvClaveFab" ColumnName="cPrvClaveFab" />
+                <ScalarProperty Name="mMSIRemision" ColumnName="mMSIRemision" />
+                <ScalarProperty Name="mMSIFactura" ColumnName="mMSIFactura" />
+                <ScalarProperty Name="mMSILote" ColumnName="mMSILote" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+                <ScalarProperty Name="mMSIFecha" ColumnName="mMSIFecha" />
+                <ScalarProperty Name="mMSIFechaFactura" ColumnName="mMSIFechaFactura" />
+                <ScalarProperty Name="mMSIPedimento" ColumnName="mMSIPedimento" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="mMSIFolio" ColumnName="mMSIFolio" />
+                <ScalarProperty Name="mMSICostoP" ColumnName="mMSICostoP" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="cAlmClave" ColumnName="cAlmClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amovimientos">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.amovimientos">
+              <MappingFragment StoreEntitySet="amovimientos">
+                <ScalarProperty Name="cMoANombre" ColumnName="cMoANombre" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AInventario" FunctionName="adminpaqcopiaModel.Store.AInventario">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="KARDEX" FunctionName="adminpaqcopiaModel.Store.KARDEX">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReprocesarAlt" FunctionName="adminpaqcopiaModel.Store.ReprocesarAlt">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReprocesarFecha" FunctionName="adminpaqcopiaModel.Store.ReprocesarFecha">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AInventarioI" FunctionName="adminpaqcopiaModel.Store.AInventarioI" />
+          <FunctionImportMapping FunctionImportName="amovimientosmvi" FunctionName="adminpaqcopiaModel.Store.amovimientosmvi">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CostoxAlt" FunctionName="adminpaqcopiaModel.Store.CostoxAlt">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="amovimientosmviTs">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.amovimientosmviT">
+              <MappingFragment StoreEntitySet="amovimientosmviT">
+                <ScalarProperty Name="diferencia" ColumnName="diferencia" />
+                <ScalarProperty Name="Unidadesexp" ColumnName="Unidadesexp" />
+                <ScalarProperty Name="Unidadesmvi" ColumnName="Unidadesmvi" />
+                <ScalarProperty Name="cMoAnombre" ColumnName="cMoAnombre" />
+                <ScalarProperty Name="cMoAClave" ColumnName="cMoAClave" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amovimientosTs">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.amovimientosT">
+              <MappingFragment StoreEntitySet="amovimientosT">
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="cMoANombre" ColumnName="cMoANombre" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AInventarioTs">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.AInventarioT">
+              <MappingFragment StoreEntitySet="AInventarioT">
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vagrupadosemanas">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.vagrupadosemana">
+              <MappingFragment StoreEntitySet="vagrupadosemana">
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_MOVADICIONALES">
+            <EntityTypeMapping TypeName="adminpaqcopiaModel.V_MOVADICIONALES">
+              <MappingFragment StoreEntitySet="V_MOVADICIONALES">
+                <ScalarProperty Name="cAlmClave" ColumnName="cAlmClave" />
+                <ScalarProperty Name="cAltClave" ColumnName="cAltClave" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="mMSICostoP" ColumnName="mMSICostoP" />
+                <ScalarProperty Name="mMSIFolio" ColumnName="mMSIFolio" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="mMSIPedimento" ColumnName="mMSIPedimento" />
+                <ScalarProperty Name="mMSIFechaFactura" ColumnName="mMSIFechaFactura" />
+                <ScalarProperty Name="mMSIFecha" ColumnName="mMSIFecha" />
+                <ScalarProperty Name="cCalClave" ColumnName="cCalClave" />
+                <ScalarProperty Name="mMSILote" ColumnName="mMSILote" />
+                <ScalarProperty Name="mMSIFactura" ColumnName="mMSIFactura" />
+                <ScalarProperty Name="mMSIRemision" ColumnName="mMSIRemision" />
+                <ScalarProperty Name="cPrvClaveFab" ColumnName="cPrvClaveFab" />
+                <ScalarProperty Name="cMoAClave" ColumnName="cMoAClave" />
+                <ScalarProperty Name="idMMovimientos" ColumnName="idMMovimientos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

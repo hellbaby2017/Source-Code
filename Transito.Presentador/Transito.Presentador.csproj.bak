@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{143F8A3C-1D2C-41BE-85FB-6DD8B00F1375}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Transito.Presentador</RootNamespace>
+    <AssemblyName>Transito.Presentador</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmctransito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmctransito.Designer.cs">
+      <DependentUpon>frmctransito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmlalmacenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlalmacenes.Designer.cs">
+      <DependentUpon>frmlalmacenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmproyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmproyecto.Designer.cs">
+      <DependentUpon>frmproyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmtransitxalmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtransitxalmacen.Designer.cs">
+      <DependentUpon>frmtransitxalmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FuncionesCRUD.cs" />
+    <Compile Include="IAlmacenes.cs" />
+    <Compile Include="ILProyecto.cs" />
+    <Compile Include="ILTransitosql.cs" />
+    <Compile Include="Ilttransito.cs" />
+    <Compile Include="PresentadorAlmacenes.cs" />
+    <Compile Include="presentadorctransito.cs" />
+    <Compile Include="PresentadorProyecto.cs" />
+    <Compile Include="PresentadorTransitoxalmacen.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmctransito.resx">
+      <DependentUpon>frmctransito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmlalmacenes.resx">
+      <DependentUpon>frmlalmacenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmproyecto.resx">
+      <DependentUpon>frmproyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtransitxalmacen.resx">
+      <DependentUpon>frmtransitxalmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Transito.Entidades.Svp_cAlmacenes.datasource" />
+    <None Include="Properties\DataSources\Transito.Entidades.Svp_cProyectos.datasource" />
+    <None Include="Properties\DataSources\Transito.Entidades.Svp_CTransito.datasource" />
+    <None Include="Properties\DataSources\Transito.Entidades.Svp_DTransitos.datasource" />
+    <None Include="Properties\DataSources\Transito.Entidades.Svp_rTransitosxAlmacen.datasource" />
+    <None Include="Properties\DataSources\Transito.Entidades.Svp_TransitosTemp.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Transito.Entidades\Transito.Entidades.csproj">
+      <Project>{8d78f711-98be-457c-8fca-3eb5261b5c2c}</Project>
+      <Name>Transito.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

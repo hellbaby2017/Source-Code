@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E04FC9C-F3CC-4324-B3CD-E6DECE035818}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Costos.presentador</RootNamespace>
+    <AssemblyName>Costos.presentador</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>%24/SVP/App Sistema de Valuación Promedio/Desarrollo/Source Code/Costos.Presentador</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>http://192.168.1.212:8080/tfs/desarrollo</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v10.2.Linq, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v10.2.Extensions, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v10.2.Extensions, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exportar.cs" />
+    <Compile Include="Frmborrarsemana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmborrarsemana.Designer.cs">
+      <DependentUpon>Frmborrarsemana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcalendario.Designer.cs">
+      <DependentUpon>frmcalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcambiarsemana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcambiarsemana.Designer.cs">
+      <DependentUpon>frmcambiarsemana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcapas1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcapas1.Designer.cs">
+      <DependentUpon>frmcapas1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcmovimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcmovimientos.Designer.cs">
+      <DependentUpon>frmcmovimientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComparacionsem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComparacionsem.Designer.cs">
+      <DependentUpon>frmComparacionsem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCostosxudn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCostosxudn.Designer.cs">
+      <DependentUpon>FrmCostosxudn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmcostoxalt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmcostoxalt.Designer.cs">
+      <DependentUpon>frmcostoxalt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCostoxtip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCostoxtip.Designer.cs">
+      <DependentUpon>frmCostoxtip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmimportar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmimportar.Designer.cs">
+      <DependentUpon>frmimportar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frminventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frminventario.Designer.cs">
+      <DependentUpon>frminventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkardexcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkardexcs.Designer.cs">
+      <DependentUpon>frmkardexcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKardexi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKardexi.Designer.cs">
+      <DependentUpon>frmKardexi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmkardexL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmkardexL.Designer.cs">
+      <DependentUpon>frmkardexL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmlmovimientosi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmlmovimientosi.Designer.cs">
+      <DependentUpon>frmlmovimientosi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmrcostoxtip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmrcostoxtip.Designer.cs">
+      <DependentUpon>frmrcostoxtip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmreportecostoxalt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreportecostoxalt.Designer.cs">
+      <DependentUpon>frmreportecostoxalt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmreproceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreproceso.Designer.cs">
+      <DependentUpon>frmreproceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmreprocesofecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmreprocesofecha.Designer.cs">
+      <DependentUpon>frmreprocesofecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frmrinventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmrinventario.Designer.cs">
+      <DependentUpon>Frmrinventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRInvetarioxfecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRInvetarioxfecha.Designer.cs">
+      <DependentUpon>FrmRInvetarioxfecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRKardexL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRKardexL.Designer.cs">
+      <DependentUpon>frmRKardexL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmV_movadicionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmV_movadicionales.Designer.cs">
+      <DependentUpon>frmV_movadicionales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FuncionesCRUD.cs" />
+    <Compile Include="ICambiarsemana.cs" />
+    <Compile Include="IlistaCalendario.cs" />
+    <Compile Include="IListaComparación.cs" />
+    <Compile Include="IlistaCostoxalt.cs" />
+    <Compile Include="IListaCostoxtip.cs" />
+    <Compile Include="IListaimportacion.cs" />
+    <Compile Include="iListaInventario.cs" />
+    <Compile Include="IListaInventarioxFecha.cs" />
+    <Compile Include="IListaKardex.cs" />
+    <Compile Include="IListaMovimientos.cs" />
+    <Compile Include="IListaReprocesoxalt.cs" />
+    <Compile Include="IListCostosxudn.cs" />
+    <Compile Include="IListKARDEXL.cs" />
+    <Compile Include="iListmcapas1.cs" />
+    <Compile Include="ireprocesoxfecha.cs" />
+    <Compile Include="Ivmovadicionalescs.cs" />
+    <Compile Include="ListaIcMovimientos.cs" />
+    <Compile Include="PresentadorCalendario.cs" />
+    <Compile Include="PresentadorCambiarSemana.cs" />
+    <Compile Include="PresentadorCompsemana.cs" />
+    <Compile Include="PresentadorCostoxalt.cs" />
+    <Compile Include="PresentadorCostoxtip.cs" />
+    <Compile Include="Presentadorecostoxudn.cs" />
+    <Compile Include="Presentadoreliminarsemana.cs" />
+    <Compile Include="Presentadores\Presentador.cs" />
+    <Compile Include="PresentadorImportacion.cs" />
+    <Compile Include="PresentadorInventario.cs" />
+    <Compile Include="PresentadorKardex.cs" />
+    <Compile Include="PresentadorKardexXL.cs" />
+    <Compile Include="Presentadorlcmovimientos.cs" />
+    <Compile Include="Presentadormcapa.cs" />
+    <Compile Include="PresentadorMovimientos.cs" />
+    <Compile Include="Presentadorreprocesoxalt.cs" />
+    <Compile Include="Presentadorreproxfecha.cs" />
+    <Compile Include="Presentadorv_madicionalescs.cs" />
+    <Compile Include="PresentadosInventarioxfecha.cs" />
+    <Compile Include="Vistas\Registromovimientos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DiagramaP.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Costos.Entidades.amovimientos.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.amovimientosmviT.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.amovimientosmvi_Result.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.cmovimientosalmacen.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.EACMOVEXPORTAR.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.ECOSTOXALT.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.ECOSTOXTIP1.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.ECOSTOXUDN.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.EKARDEX.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.EKARDEXL.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.EMCAPAS1.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.mcapas.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.Mvi_cAlternativas.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.Mvi_cCalendario.datasource" />
+    <None Include="Properties\DataSources\Costos.Entidades.V_MOVADICIONALES.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frmborrarsemana.resx">
+      <DependentUpon>Frmborrarsemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcalendario.resx">
+      <DependentUpon>frmcalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcambiarsemana.resx">
+      <DependentUpon>frmcambiarsemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcapas1.resx">
+      <DependentUpon>frmcapas1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcmovimientos.resx">
+      <DependentUpon>frmcmovimientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComparacionsem.resx">
+      <DependentUpon>frmComparacionsem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCostosxudn.resx">
+      <DependentUpon>FrmCostosxudn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmcostoxalt.resx">
+      <DependentUpon>frmcostoxalt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCostoxtip.resx">
+      <DependentUpon>frmCostoxtip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmimportar.resx">
+      <DependentUpon>frmimportar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frminventario.resx">
+      <DependentUpon>frminventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkardexcs.resx">
+      <DependentUpon>frmkardexcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKardexi.resx">
+      <DependentUpon>frmKardexi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmkardexL.resx">
+      <DependentUpon>frmkardexL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmlmovimientosi.resx">
+      <DependentUpon>frmlmovimientosi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmrcostoxtip.resx">
+      <DependentUpon>frmrcostoxtip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmreportecostoxalt.resx">
+      <DependentUpon>frmreportecostoxalt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmreproceso.resx">
+      <DependentUpon>frmreproceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmreprocesofecha.resx">
+      <DependentUpon>frmreprocesofecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmrinventario.resx">
+      <DependentUpon>Frmrinventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRInvetarioxfecha.resx">
+      <DependentUpon>FrmRInvetarioxfecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRKardexL.resx">
+      <DependentUpon>frmRKardexL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmV_movadicionales.resx">
+      <DependentUpon>frmV_movadicionales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RAlternativa.rdlc" />
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="Report4.rdlc" />
+    <EmbeddedResource Include="Report5.rdlc" />
+    <EmbeddedResource Include="Report6.rdlc" />
+    <EmbeddedResource Include="Rinventario.rdlc" />
+    <EmbeddedResource Include="RKardex.rdlc" />
+    <EmbeddedResource Include="RKARDEXL.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Costos.Entidades\Costos.Entidades.csproj">
+      <Project>{e4d78db2-7dfb-412f-9f3e-1abcf16fbf28}</Project>
+      <Name>Costos.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\COSTOS.FUNCIONES\Costos.Funciones.vbproj">
+      <Project>{52cc90fd-7576-4446-bd90-55f3d9a11edf}</Project>
+      <Name>Costos.Funciones</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VarGlobales\VarGlobales.vbproj">
+      <Project>{6304e50b-f807-455d-aa5e-0fd97ec62d6e}</Project>
+      <Name>VarGlobales</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Microsoft_Excel_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PDF_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chrome_32.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

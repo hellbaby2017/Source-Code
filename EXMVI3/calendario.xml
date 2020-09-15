@@ -1,0 +1,71 @@
+﻿<XtraSerializer version="1.0" application="View">
+  <property name="#LayoutVersion" />
+  <property name="ActiveFilterEnabled">true</property>
+  <property name="Columns" iskey="true" value="8">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">0</property>
+      <property name="Name">colNoClave</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">NoClave</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">1</property>
+      <property name="Name">colNoSemana</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">NoSemana</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">2</property>
+      <property name="Name">colAño</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">Año</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">3</property>
+      <property name="Name">colFechaInicio</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">FechaInicio</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">4</property>
+      <property name="Name">colFechaFinal</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">FechaFinal</property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">5</property>
+      <property name="Name">colMes</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">Mes</property>
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">6</property>
+      <property name="Name">colProcesada</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">Procesada</property>
+    </property>
+    <property name="Item8" isnull="true" iskey="true">
+      <property name="Visible">true</property>
+      <property name="VisibleIndex">7</property>
+      <property name="Name">colExportada</property>
+      <property name="ColumnEditName" />
+      <property name="FieldName">Exportada</property>
+    </property>
+  </property>
+  <property name="OptionsView" isnull="true" iskey="true">
+    <property name="ShowFilterPanelMode">ShowAlways</property>
+    <property name="EnableAppearanceEvenRow">true</property>
+    <property name="EnableAppearanceOddRow">true</property>
+    <property name="ShowGroupPanel">false</property>
+    <property name="ShowDetailButtons">false</property>
+  </property>
+  <property name="ActiveFilterString" />
+  <property name="GroupSummarySortInfoState" />
+</XtraSerializer>
